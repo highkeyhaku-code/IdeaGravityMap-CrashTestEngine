@@ -46,10 +46,13 @@ export default function ValidatePage() {
         }),
       });
       const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || 'クラッシュテストの実行中にサーバーエラーが発生しました。');
+      }
       setResult(data);
-    } catch (e) {
+    } catch (e: any) {
       console.error(e);
-      alert('Crash test failed.');
+      alert(e.message || 'クラッシュテストの実行に失敗しました。');
     } finally {
       setIsCrashtesting(false);
     }
