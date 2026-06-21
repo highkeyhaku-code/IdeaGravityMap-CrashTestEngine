@@ -5,7 +5,7 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || '');
 
 // PRD Section 5: Use models defined in .env.local.
 // Fallback to gemini-3-flash if not specified.
-const DEFAULT_MODEL = process.env.NEXT_PUBLIC_FAST_MODEL || 'gemini-3-flash';
+const DEFAULT_MODEL = (process.env.NEXT_PUBLIC_FAST_MODEL || 'gemini-3-flash').replace(/^"|"$/g, '');
 
 const model = genAI.getGenerativeModel(
   { model: DEFAULT_MODEL },
