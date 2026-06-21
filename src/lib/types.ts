@@ -33,6 +33,8 @@ export const WhatIfCardSchema = z.object({
 
 export const WhatIfGenerationSchema = z.array(WhatIfCardSchema).length(4);
 
+export type WhatIfCard = z.infer<typeof WhatIfCardSchema>;
+
 export type IdeaStatus = 'draft' | 'validation' | 'crushed' | 'survived';
 
 export const CrashTestResultSchema = z.object({

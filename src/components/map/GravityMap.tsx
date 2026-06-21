@@ -3,7 +3,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import * as d3 from 'd3';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sparkles, Planet, Zap, Target } from 'lucide-react';
+import { Sparkles, Zap, Target } from 'lucide-react';
 import { CompetitorNode, MarketGap } from '@/lib/types';
 
 interface GravityMapProps {
@@ -127,7 +127,9 @@ export default function GravityMap({ data, onPlanetDrop }: GravityMapProps) {
     grad.append('stop').attr('offset', '0%').attr('stop-color', '#3b82f6');
     grad.append('stop').attr('offset', '100%').attr('stop-color', 'transparent');
 
-    return () => simulation.stop();
+    return () => {
+      simulation.stop();
+    };
   }, [data]);
 
   return (
